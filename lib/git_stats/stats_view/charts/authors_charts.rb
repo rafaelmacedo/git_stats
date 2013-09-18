@@ -21,7 +21,7 @@ module GitStats
           define_method "#{method}_by_author_by_date" do |authors = nil|
             Chart.new do |f|
               f.multi_date_chart(
-                  data: (authors || @authors.sort_by { |author| -author.send(method) }.map { |author| {name: author.name, data: author.send("#{method}_by_date")} },
+                  data: (authors || @authors.sort_by { |author| -author.send(method) }).map { |author| {name: author.name, data: author.send("#{method}_by_date")} },
                   title: :lines_by_date.t,
                   y_text: :lines.t
               )
